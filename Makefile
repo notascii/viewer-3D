@@ -10,9 +10,6 @@ all: $(EXEC)
 $(EXEC): $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o: %.c
-	$(CC) -o $@ -c $^ $(CFLAGS)
-
 clean:
 	rm -f *.o $(EXEC)
 
