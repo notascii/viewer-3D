@@ -20,18 +20,23 @@ int main(int argc, char **argv)
     char title[10] = "App";
     
     int i = 0;
-    FILE *pf_cube = NULL;
+    FILE *pfile = NULL;
 
-    pf_cube = fopen("pyramide.obj", "r");
+    pfile = fopen("pyramide.obj", "r");
 
-    mesh.nb_points = vertex_number(pf_cube);
+    if (pfile == NULL) {
+        printf("error: NULL pointer\n");
+        return (-1);
+    }
+
+    mesh.nb_points = vertex_number(pfile);
     mesh.tab_points = (Point *)malloc(mesh.nb_points * sizeof(Point));
-    mesh.nb_faces = faces_number(pf_cube);
+    mesh.nb_faces = faces_number(pfile);
     mesh.tab_faces = (Face *)malloc(mesh.nb_faces * sizeof(Face));
 
 
-    read_points(pf_cube, &mesh);
-    read_faces(pf_cube, &mesh);
+    read_points(pfile, &mesh);
+    read_faces(pfile, &mesh);
 
     printf("Nombre de vertex dans le fichier : %d\n", mesh.nb_points);
     for (i = 0; i < mesh.nb_points; i++) {
@@ -59,7 +64,7 @@ int main(int argc, char **argv)
 
 	glutMainLoop();
 
-    fclose(pf_cube);
+    fclose(pfile);
     free(mesh.tab_points);
 
     return (0);
