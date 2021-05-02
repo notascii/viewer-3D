@@ -13,7 +13,7 @@ Mesh mesh;
 
 void init(void)
 {
-	glClearColor(0.0, 0.0, 0.0, 0.0);
+	glClearColor(0.6f, 0.3f, 0.3f, 0.5f);
 	glShadeModel(GL_FLAT);
 	glEnable(GL_DEPTH_TEST);
 }
@@ -30,7 +30,7 @@ void display(void)
 	glLoadIdentity();
 	gluLookAt(0.2, 0, 2, 0, 0, 0, 0, 0, 1);
 	
-	glRotatef(spin, 1.0, 1.0, 1.0);
+	glRotatef(spin, 1.0, 0.0, 0.0);
 	
 	glBegin(GL_TRIANGLES);
 	

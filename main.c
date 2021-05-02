@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     int i = 0;
     FILE *pfile = NULL;
 
-    pfile = fopen("pyramide.obj", "r");
+    pfile = fopen(argv[1], "r");
 
     if (pfile == NULL) {
         printf("error: NULL pointer\n");
@@ -33,7 +33,6 @@ int main(int argc, char **argv)
     mesh.tab_points = (Point *)malloc(mesh.nb_points * sizeof(Point));
     mesh.nb_faces = faces_number(pfile);
     mesh.tab_faces = (Face *)malloc(mesh.nb_faces * sizeof(Face));
-
 
     read_points(pfile, &mesh);
     read_faces(pfile, &mesh);
