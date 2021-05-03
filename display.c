@@ -9,7 +9,6 @@
 #include "display.h"
 
 GLfloat spin = 0.0f;
-Mesh mesh;
 
 void init(void)
 {
@@ -23,12 +22,14 @@ void display(void)
 	int i = 0;
 	Point p1, p2, p3;
 
+	/* printf("display : %f %f %f\n", eye_x, eye_y, eye_z); */
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	glPushMatrix();
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(0.2, 0, 2, 0, 0, 0, 0, 0, 1);
+	gluLookAt(eye_x, eye_y, eye_z, 0, 0, 0, 0, 0, 1);
 	
 	glRotatef(spin, 1.0, 0.0, 0.0);
 	

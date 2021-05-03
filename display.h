@@ -2,6 +2,8 @@
 #define DISPLAY_H
 
 extern GLfloat spin;
+extern Mesh mesh;
+extern double eye_x, eye_y, eye_z;
 
 void init(void);
 void display(void);

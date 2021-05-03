@@ -9,18 +9,21 @@
 #include "face.h"
 #include "display.h"
 
-/* 
-LISTER LES FONCTIONS DE CHAQUE MODULE :
-- fonctions de point.c
-- fonctions de mesh.c */
-
+double eye_x, eye_y, eye_z;
+Mesh mesh;
 
 int main(int argc, char **argv)
 {
-    char title[10] = "App";
+    char title[10] = "Viewer 3D";
     
-    int i = 0;
+    /* int i = 0; */
     FILE *pfile = NULL;
+
+    eye_x = strtod(argv[2], NULL);
+    eye_y = strtod(argv[3], NULL);
+    eye_z = strtod(argv[4], NULL);
+
+    printf("main : %f %f %f\n", eye_x, eye_y, eye_z);
 
     pfile = fopen(argv[1], "r");
 
@@ -37,6 +40,7 @@ int main(int argc, char **argv)
     read_points(pfile, &mesh);
     read_faces(pfile, &mesh);
 
+    #if 0
     printf("Nombre de vertex dans le fichier : %d\n", mesh.nb_points);
     for (i = 0; i < mesh.nb_points; i++) {
         printf("point %d ", i);
@@ -47,6 +51,7 @@ int main(int argc, char **argv)
         printf("face %d ", i);
         print_face(&mesh.tab_faces[i]);
     }
+    #endif
 
     /* printf("%p\n", (void *)mesh.tabPoint); */
 
